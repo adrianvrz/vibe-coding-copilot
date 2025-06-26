@@ -1,4 +1,28 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Weather & Marine Search App
+
+A comprehensive weather search application built with [Next.js](https://nextjs.org) and powered by the [Open-Meteo API](https://open-meteo.com/). Search for any location worldwide and get real-time weather information plus marine conditions.
+
+## Features
+
+- **🌍 Global Location Search**: Search for cities and locations worldwide
+- **🌤️ Real-time Weather Data**: Get current temperature, humidity, wind speed and direction
+- **� Marine Weather**: Wave height and sea surface temperature for coastal locations
+- **�🎨 Beautiful UI**: Built with shadcn/ui components and Tailwind CSS
+- **📱 Responsive Design**: Works perfectly on desktop and mobile
+- **⚡ Fast Search**: Debounced search with instant results
+- **🎯 TypeScript**: Fully typed for better development experience
+- **🔄 Parallel Data Loading**: Weather and marine data fetched simultaneously
+
+## Tech Stack
+
+- **Next.js 15** with App Router
+- **TypeScript** for type safety
+- **Tailwind CSS** for styling
+- **shadcn/ui** for UI components
+- **ESLint** for code quality
+- **Turbopack** for fast development
+- **Open-Meteo API** for weather data
+- **Open-Meteo Marine API** for sea conditions
 
 ## Getting Started
 
@@ -14,9 +38,33 @@ pnpm dev
 bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the weather search app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## How to Use
+
+1. **Search for a Location**: Type in the search box to find cities and locations
+2. **Select a Location**: Click on any search result to see weather details
+3. **View Weather Data**: See current temperature, humidity, wind speed, and more
+4. **Marine Conditions**: For coastal locations, view wave height and sea temperature
+5. **Try Different Locations**: Search for multiple locations to compare conditions
+
+## Marine Weather
+
+The app automatically fetches marine weather data for selected locations, including:
+- **Wave Height**: Current wave conditions with descriptive labels
+- **Sea Surface Temperature**: Water temperature at the surface
+- **Visual Indicators**: Emoji-based icons showing sea conditions
+
+Marine data is available for most coastal and oceanic locations worldwide.
+
+## API Information
+
+This app uses the [Open-Meteo API](https://open-meteo.com/), which provides:
+- Free weather data without API key
+- Global coverage with accurate forecasts
+- High-resolution weather models
+- Marine weather data for coastal locations
+- No rate limits for reasonable use
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
