@@ -6,7 +6,14 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "version:info": "scripts/version-info.sh",
+    "docker:build": "scripts/build-docker.sh",
+    "docker:build:patch": "scripts/build-docker.sh patch",
+    "docker:build:minor": "scripts/build-docker.sh minor",
+    "docker:build:major": "scripts/build-docker.sh major",
+    "docker:run": "docker run -p 3000:3000 vibe-coding-copilot:latest",
+    "docker:run:detached": "docker run -d -p 3000:3000 vibe-coding-copilot:latest"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
