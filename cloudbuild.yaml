@@ -1,0 +1,40 @@
+steps:
+# 1. Build the Docker image
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:$COMMIT_SHA', '.']
+
+# 2. Push the image to Artifact Registry
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:$COMMIT_SHA']
+
+# 3. Deploy to Cloud Run
+- name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+  entrypoint: gcloud
+  args:
+  - 'run'
+  - 'deploy'
+  - '${_SERVICE_NAME}'
+  - '--image'
+  - '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:$COMMIT_SHA'
+  - '--region'
+  - '${_LOCATION}'
+  - '--platform'
+  - 'managed'
+  - '--allow-unauthenticated'
+  - '--port'
+  - '80'
+
+# Store the image name for later use
+images:
+- '${_LOCATION}-docker.pkg.dev/${PROJECT_ID}/${_REPO_NAME}/${_SERVICE_NAME}:$COMMIT_SHA'
+
+# Substitutions that can be configured in the trigger
+substitutions:
+  _SERVICE_NAME: 'vibe-coding-copilot'
+  _REPO_NAME: 'vibe-coding-copilot-repo'
+  # These values can be set in the trigger configuration
+  # _LOCATION: 'us-central1'
+  # _PROJECT_ID: 'your-gcp-project-id'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
