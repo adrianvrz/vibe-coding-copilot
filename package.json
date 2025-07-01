@@ -12,8 +12,16 @@
     "docker:build:patch": "scripts/build-docker.sh patch",
     "docker:build:minor": "scripts/build-docker.sh minor",
     "docker:build:major": "scripts/build-docker.sh major",
+    "docker:cleanup": "scripts/cleanup-docker.sh",
+    "docker:cleanup:dry": "scripts/cleanup-docker.sh --dry-run",
+    "docker:cleanup:aggressive": "scripts/cleanup-docker.sh --all-old",
     "docker:run": "docker run -p 3000:3000 vibe-coding-copilot:latest",
-    "docker:run:detached": "docker run -d -p 3000:3000 vibe-coding-copilot:latest"
+    "docker:run:detached": "docker run -d -p 3000:3000 vibe-coding-copilot:latest",
+    "compose:dev": "docker-compose up vibe-dev",
+    "compose:prod": "docker-compose up vibe-prod",
+    "compose:prod:nginx": "docker-compose --profile production up",
+    "compose:build": "docker-compose build",
+    "compose:down": "docker-compose down"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.3",
